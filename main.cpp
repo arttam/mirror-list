@@ -23,6 +23,7 @@
 #define DAEMON_NAME "pacman-mirror-daemon"
 
 //const char MonitorDir[]   = "/tmp/pacman.d/mirrorlist.pacnew";
+const char DaemonDir[]     = "/var/tmp/pacman-mirror-daemon";
 const char DaemonLock[]    = "pacman-mirror-daemon.lock";
 const char MonitorDir[]   = "/etc/pacman.d";
 const char MonitorFile[]   = "mirrorlist.pacnew";
@@ -194,7 +195,7 @@ int main(int argc, char *argv[]) {
 
     //Change Directory
     //If we cant find the directory we exit with failure.
-    if ((chdir("/var/tmp/pacman-mirror-daemon")) < 0) { exit(EXIT_FAILURE); }
+    if ((chdir(DaemonDir)) < 0) { exit(EXIT_FAILURE); }
 
     //Close Standard File Descriptors
     close(STDIN_FILENO);
